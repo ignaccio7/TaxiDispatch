@@ -1,0 +1,5 @@
+{  
+  "BACKEND-DISPATCH/**/*.{js,jsx,ts,tsx}": [    
+    "npm run validate --no-errors-on-unmatched"
+  ]
+}

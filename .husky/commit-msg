@@ -1,0 +1,2 @@
+echo "🚀 Starting commit-msg pre-commit hook..."
+npx --no-install commitlint --edit $1
