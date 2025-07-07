@@ -1,7 +1,4 @@
 {
-  "FRONTEND-DISPATCH/**/*.{js,vue}": [
-    "npm run validate --workspace=BACKEND-DISPATCH"
-  ],
   "BACKEND-DISPATCH/**/*.{js,ts}": [
     "npm run validate --workspace=BACKEND-DISPATCH"
   ]
