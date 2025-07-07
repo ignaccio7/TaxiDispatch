@@ -1,0 +1,125 @@
+{
+  "categories": {
+    "correctness": "error", // Errores que definitivamente están mal
+    "suspicious": "warn", // Código sospechoso que probablemente esté mal
+    "pedantic": "off", // Reglas muy estrictas - las habilitamos selectivamente
+    "perf": "warn", // Optimizaciones de rendimiento
+    "style": "warn", // Estilo de código consistente
+    "restriction": "off" // Restricciones - las habilitamos caso por caso
+  },
+
+  "plugins": [
+    "node", // Para funciones de Node.js como fs, path, etc.
+    "promise", // Para async/await y promesas - SÍ funciona con ES modules
+    "unicorn", // Buenas prácticas modernas JS
+    "oxc" // Plugin interno de oxlint
+  ],
+
+  "env": {
+    // NOTA: Aunque uses ES modules, necesitas "node": true para process, Buffer, etc.
+    // __dirname y require NO estarán disponibles con type: "module"
+    "node": true, // Permite: process, Buffer, global, setImmediate
+    "es6": true, // Permite: Promise, Map, Set, class, const, let
+    "es2022": true // Permite: top-level await, private fields
+  },
+
+  "rules": {
+    // === Reglas que deshabilitaremos de unicorn
+    "unicorn/filename-case": "off",
+    "sort-imports": "off",
+    "import/order": "off",
+
+    // === Reglas de Correctness (errores críticos) ===
+    "no-unused-vars": "error", // Variables declaradas pero nunca usadas
+    "no-undef": "error", // Variables no definidas (typos, imports faltantes)
+    "no-console": "off", // console.log está bien en Node.js pero como warning
+    "no-debugger": "error", // Quitar debugger antes de producción
+
+    // === Reglas de Estilo (similar a JavaScript Standard) ===
+    "no-var": "error", // Prohibir var, usar let/const
+    "prefer-const": "error", // Si no se reasigna, usar const
+    "no-extra-semi": "error", // Punto y coma innecesario: let x = 5;;
+    "no-multiple-empty-lines": ["error", { "max": 2 }], // Máximo 2 líneas vacías seguidas
+    "no-trailing-spaces": "error", // Espacios al final de líneas
+    "indent": ["error", 2], // Indentación de 2 espacios
+    "quotes": ["error", "single"], // Comillas simples 'texto' no "texto"
+    "semi": ["error", "never"], // Sin punto y coma al final
+    "comma-dangle": ["error", "never"], // Sin coma al final: { a: 1, b: 2 } no { a: 1, b: 2, }
+    "object-curly-spacing": ["error", "always"], // Espacios en objetos: { a: 1 } no {a: 1}
+    "array-bracket-spacing": ["error", "never"], // Sin espacios en arrays: [1, 2] no [ 1, 2 ]
+    "key-spacing": ["error", { "beforeColon": false, "afterColon": true }], // a: 1 no a :1 o a:1
+    "space-before-blocks": "error", // Espacio antes de {: if (true) { no if (true){
+    "space-before-function-paren": ["error", "always"], // function name () { no function name(){
+    "space-in-parens": ["error", "never"], // if (true) no if ( true )
+    "space-infix-ops": "error", // a + b no a+b
+    "keyword-spacing": "error", // if (true) no if(true)
+    "eol-last": "error", // Línea vacía al final del archivo
+
+    // === Reglas específicas para Node.js ===
+    "no-path-concat": "error", // Usar path.join('/home', 'user') no '/home' + '/' + 'user'
+    "handle-callback-err": "error", // En callbacks: if (err) throw err - manejar errores
+
+    // === Reglas para Promises ===
+    "promise/catch-or-return": "error", // Siempre hacer .catch() o return en promesas
+    "promise/no-return-wrap": "error", // No hacer return Promise.resolve(value), solo return value
+    "promise/param-names": "error", // Nombres correctos: .then(result => {}) no .then(res => {})
+    "promise/no-callback-in-promise": "error", // No mezclar callbacks con promesas
+
+    // === Reglas de Unicorn (buenas prácticas) ===
+    "unicorn/prefer-node-protocol": "error", // import fs from 'node:fs' no import fs from 'fs'
+    "unicorn/prefer-module": "error", // Preferir ES modules sobre CommonJS
+    "unicorn/no-array-for-each": "off", // forEach está bien, no forzar for-of
+    "unicorn/prevent-abbreviations": "off", // Permitir btn, str, num, etc.
+    "unicorn/no-null": "off", // null está bien, no forzar undefined
+    "unicorn/prefer-top-level-await": "error", // Usar await sin función async en top-level
+
+    // === Reglas de rendimiento ===
+    "no-await-in-loop": "warn", // await dentro de for/while puede ser lento
+
+    // === Reglas específicas para Express ===
+    "no-unused-expressions": "off", // Para middleware como app.use(middleware)
+
+    // === Reglas pedantic que queremos habilitar ===
+    "eqeqeq": "error", // Usar === y !== no == y !=
+    "no-else-return": "error", // Si hay return, no necesitas else después
+    "no-lonely-if": "error", // if dentro de else: usar else if
+    "prefer-arrow-callback": "error", // Usar () => {} no function() {}
+
+    // === Reglas de restricción que queremos habilitar ===
+    "no-alert": "error", // No usar alert() en Node.js (es de browser)
+    "no-eval": "error", // No usar eval() - inseguro
+    "no-new-func": "error", // No usar new Function() - inseguro
+    "no-implied-eval": "error" // No usar setTimeout('code', 100) - inseguro
+  },
+
+  "ignorePatterns": [
+    "node_modules/**", // Dependencias - no verificar
+    "dist/**", // Archivos compilados/transpilados
+    "build/**", // Archivos de build (webpack, vite, etc.)
+    "coverage/**", // Reportes de cobertura de tests (jest --coverage)
+    "*.min.js", // Archivos minificados
+    "public/**", // Archivos estáticos servidos por Express
+    "docs/**" // Documentación generada
+  ],
+
+  "overrides": [
+    {
+      // Para archivos .mjs (siempre ES modules)
+      "files": ["**/*.mjs"],
+      "env": {
+        "es6": true,
+        "es2022": true
+      },
+      "rules": {
+        "unicorn/prefer-module": "error" // Forzar ES modules en .mjs
+      }
+    },
+    {
+      // Para archivos de configuración - permitir console.log
+      "files": ["**/config/**/*.js", "**/*.config.js"],
+      "rules": {
+        "no-console": "off" // En configs está bien usar console.log
+      }
+    }
+  ]
+}

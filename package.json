@@ -1,9 +1,9 @@
 {
-  "name": "taxidispatch-monorepo",  
+  "name": "taxidispatch-monorepo",
   "private": true,
   "workspaces": [
-    "BACKEND",
-    "FRONTEND/**"
+    "BACKEND-DISPATCH",
+    "FRONTEND-DISPATCH"
   ],
   "version": "0.0.0",
   "description": "Aplicacion para gestionar servicios de radiotaxistas",
@@ -11,7 +11,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky",
-    "lint-staged": "lint-staged"    
+    "lint-staged": "lint-staged"
   },
   "author": "rc-team",
   "license": "GPL-3.0",

@@ -1,5 +1,8 @@
-{  
-  "BACKEND-DISPATCH/**/*.{js,jsx,ts,tsx}": [    
-    "npm run validate --no-errors-on-unmatched"
+{
+  "FRONTEND-DISPATCH/**/*.{js,vue}": [
+    "npm run validate --workspace=BACKEND-DISPATCH"
+  ],
+  "BACKEND-DISPATCH/**/*.{js,ts}": [
+    "npm run validate --workspace=BACKEND-DISPATCH"
   ]
 }
