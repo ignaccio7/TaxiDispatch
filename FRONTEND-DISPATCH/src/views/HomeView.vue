@@ -41,7 +41,7 @@ watch(loading, (value) => {
         <v-container class="form-container d-flex flex-column justify-center align-center">
           <form v-on:submit="handleSubmit" class="d-flex flex-column w-100 ga-2 pa-2">
             <h2 class="text-h4 text-center pa-4">
-              Inicia Sesión</h2>
+              Inicia Sesión - LOGIN</h2>
             <div class="">
               <v-text-field class="" label="Usuario" variant="outlined" placeholder="Usuario"></v-text-field>
             </div>
