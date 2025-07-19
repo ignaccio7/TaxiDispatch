@@ -37,7 +37,7 @@ app.get('/', (req, res) => {
   })
 })
 
-app.get('/health', (req, res) => {
+app.get('/healthly', (req, res) => {
   res.status(STATUS_CODES.OK).json({
     status: 'OK',
     timestamp: new Date().toISOString(),
