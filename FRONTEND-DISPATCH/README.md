@@ -51,4 +51,37 @@ npm run test:e2e -- --project=chromium
 npm run test:e2e -- tests/example.spec.ts
 # Runs the tests in debug mode
 npm run test:e2e -- --debug
+
+```
+
+## Instalacion de Vuetify y dependencias
+
+```bash
+npm install vuetify@^3.0.0 sass
+```
+
+## Configurar Vuetify en main.js
+
+```js
+import { createApp } from 'vue'
+import App from './App.vue'
+
+// Vuetify
+import 'vuetify/styles'
+import { createVuetify } from 'vuetify'
+import * as components from 'vuetify/components'
+import * as directives from 'vuetify/directives'
+
+const vuetify = createVuetify({
+  components,
+  directives,
+})
+
+createApp(App).use(vuetify).mount('#app')
+```
+
+## Instalar material design
+
+```bash
+npm install @jamescoyle/vue-icon @mdi/js
 ```
