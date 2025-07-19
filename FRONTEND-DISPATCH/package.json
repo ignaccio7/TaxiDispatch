@@ -14,9 +14,11 @@
     "lint": "run-s lint:*"
   },
   "dependencies": {
+    "@mdi/font": "^7.4.47",
     "pinia": "^3.0.3",
     "vue": "^3.5.17",
-    "vue-router": "^4.5.1"
+    "vue-router": "^4.5.1",
+    "vuetify": "^3.9.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",
