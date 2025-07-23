@@ -1,0 +1,42 @@
+'use strict';
+/** @type {import('sequelize-cli').Migration} */
+module.exports = {
+  async up(queryInterface, Sequelize) {
+    await queryInterface.createTable('usuarios', {
+       id_usuario: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        allowNull: false,
+        references: {
+          model: 'personas',
+          key: 'id_persona'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
+      },
+      correo: {
+        allowNull: false,
+        type: Sequelize.STRING,
+        unique: true
+      },
+      clave: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      rol: {
+        type: Sequelize.STRING
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      }
+    });
+  },
+  async down(queryInterface, Sequelize) {
+    await queryInterface.dropTable('usuarios');
+  }
+};
