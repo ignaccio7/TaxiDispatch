@@ -1,6 +1,9 @@
 const VEHICLE_SIZE = 8;
 const PERSON_COLOR = "#5b5b5b";
-const STREET_LINE_COLOR = "#d6d6d6";
+// const STREET_LINE_COLOR = "#d6d6d6";
+const STREET_LINE_COLOR = getComputedStyle(document.documentElement)
+  .getPropertyValue("--street-line-color")
+  .trim();
 
 class ParticlesPerson {
   constructor(x, y) {
@@ -15,10 +18,10 @@ class ParticlesPerson {
     this.vy = Math.random() * this.speed * 2 - this.speed;
   }
 
-  draw(ctx) {
+  draw(ctx, color) {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-    ctx.fillStyle = PERSON_COLOR;
+    ctx.fillStyle = color;
     ctx.fill();
     ctx.closePath();
   }
@@ -92,10 +95,10 @@ class ParticleVehicle {
 }
 
 class StreetLines {
-  static drawCircle(radius, positionX, positionY, ctx) {
+  static drawCircle(radius, positionX, positionY, ctx, lineColor) {
     ctx.beginPath();
     ctx.arc(positionX, positionY, radius, 0, Math.PI * 2);
-    ctx.strokeStyle = STREET_LINE_COLOR;
+    ctx.strokeStyle = lineColor;
     ctx.stroke();
     ctx.closePath();
   }

@@ -30,7 +30,7 @@ watch(loading, (value) => {
     <BackgroundHome />
     <canvas ref="canvas" />
     <div class="container-login">
-      <v-sheet class="login sombra" color="surface">
+      <v-sheet class="login sombra">
         <div class="slider">
           <v-carousel show-arrows="hover" cycle hide-delimiter-background hide-delimiters class="carousel-custom">
             <v-carousel-item src="https://cdn.vuetifyjs.com/images/cards/docks.jpg" cover></v-carousel-item>

@@ -10,32 +10,32 @@ const vuetify = createVuetify({
   components,
   directives,
   theme: {
-    defaultTheme: "light", // o 'dark' si quieres iniciar en oscuro
+    defaultTheme: "light",
     themes: {
       light: {
         dark: false,
         colors: {
-          background: "#FFFFFF",
-          surface: "#FFFFFF",
           primary: "#1976D2",
           secondary: "#424242",
           error: "#FF5252",
           info: "#2196F3",
           success: "#4CAF50",
           warning: "#FB8C00",
+          streetLineColor: "#e0e0e0",
+          personColor: "#5b5b5b",
         },
       },
       dark: {
         dark: true,
         colors: {
-          background: "#121212",
-          surface: "#1E1E1E",
           primary: "#90CAF9",
           secondary: "#424242",
           error: "#EF5350",
           info: "#29B6F6",
           success: "#66BB6A",
           warning: "#FFA726",
+          streetLineColor: "#282828ff",
+          personColor: "#ffffff",
         },
       },
     },

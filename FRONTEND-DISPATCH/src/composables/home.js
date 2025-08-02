@@ -1,8 +1,18 @@
 import { ParticlesPerson, ParticleVehicle, StreetLines } from "@/utils/home";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, computed } from "vue";
+import { useTheme } from "vuetify";
 
 export function useBackgroundHome({ numberOfPeople, numberOfVehicles }) {
   const canvas = ref(null);
+  const theme = useTheme();
+
+  const streetLineColor = computed(() => {
+    return theme.current.value.colors.streetLineColor;
+  });
+
+  const personColor = computed(() => {
+    return theme.current.value.colors.personColor;
+  });
 
   onMounted(() => {
     const canvasElement = canvas.value;
@@ -110,15 +120,15 @@ export function useBackgroundHome({ numberOfPeople, numberOfVehicles }) {
 
       // Dibujamos a las personas
       people.forEach((person) => {
-        person.draw(ctx);
+        person.draw(ctx, personColor.value);
         person.float();
       });
 
       // Dibujamos las lineas de la calle
       // Primer circulo en la linea superior izquierda de la pantalla
-      StreetLines.drawCircle(250, 0, 0, ctx); // Trayecto 1
+      StreetLines.drawCircle(250, 0, 0, ctx, streetLineColor.value); // Trayecto 1
       // Segundo circulo en la linea inferior derecha de la pantalla
-      StreetLines.drawCircle(250, width, height, ctx); // Trayecto 2
+      StreetLines.drawCircle(250, width, height, ctx, streetLineColor.value); // Trayecto 2
       // Dibujamos 2 lineas vertical alrededor del medio de la pantalla
       StreetLines.drawStraightLine(width / 3, 0, width / 3, height, ctx); // Trayecto 3
       StreetLines.drawStraightLine((width / 3) * 2, 0, (width / 3) * 2, height, ctx); // Trayecto 4
