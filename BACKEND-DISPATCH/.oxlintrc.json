@@ -105,7 +105,7 @@
   "overrides": [
     {
       // Para archivos .mjs (siempre ES modules)
-      "files": ["**/*.mjs"],
+      "files": ["**/*.js"],
       "env": {
         "es6": true,
         "es2022": true
