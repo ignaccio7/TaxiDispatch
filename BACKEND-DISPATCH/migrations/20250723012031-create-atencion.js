@@ -1,6 +1,6 @@
 'use strict';
 /** @type {import('sequelize-cli').Migration} */
-module.exports = {
+export default {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('atencions', {
       id_atencion: {
@@ -8,6 +8,11 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
+      },
+      
+      estado: {
+        type: Sequelize.STRING,
+        allowNull: false
       },
       fecha: {
         type: Sequelize.DATE,
@@ -19,10 +24,6 @@ module.exports = {
       },
       hora_fin: {
         type: Sequelize.TIME,
-        allowNull: false
-      },
-      estado: {
-        type: Sequelize.STRING,
         allowNull: false
       },
       direccion: {
@@ -73,7 +74,7 @@ module.exports = {
       }
     });
   },
-  async down(queryInterface, Sequelize) {
+  async down(queryInterface) {
     await queryInterface.dropTable('atencions');
   }
 };

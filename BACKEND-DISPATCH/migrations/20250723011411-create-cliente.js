@@ -1,6 +1,6 @@
 'use strict';
 /** @type {import('sequelize-cli').Migration} */
-module.exports = {
+export default{
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('clientes', {
       id_cliente: {
@@ -17,6 +17,11 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
+      estado: {
+        allowNull: false,
+        defaultValue: true,
+        type: Sequelize.BOOLEAN
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -27,7 +32,7 @@ module.exports = {
       }
     });
   },
-  async down(queryInterface, Sequelize) {
+  async down(queryInterface) {
     await queryInterface.dropTable('clientes');
   }
 };

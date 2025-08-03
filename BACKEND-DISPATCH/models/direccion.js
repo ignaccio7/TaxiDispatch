@@ -2,7 +2,7 @@
 const {
   Model
 } = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
+export default(sequelize, DataTypes) => {
   class Direccion extends Model {
   
     static associate(models) {

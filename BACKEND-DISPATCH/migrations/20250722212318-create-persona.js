@@ -1,6 +1,6 @@
 'use strict';
 /** @type {import('sequelize-cli').Migration} */
-module.exports = {
+export default {
 
   //logica para crear la tabla
   async up(queryInterface, Sequelize) {
@@ -13,7 +13,7 @@ module.exports = {
       },
       ci: {
         allowNull: false,
-        type: Sequelize.VARCHAR //123132123-1
+        type: Sequelize.STRING //123132123-1
 
       },
       paterno: { 
@@ -32,6 +32,11 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
+      estado: {
+        allowNull: false,
+        defaultValue: true,
+        type: Sequelize.BOOLEAN
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -43,7 +48,7 @@ module.exports = {
     });
   },
   //logica para eliminar la tabla
-  async down(queryInterface, Sequelize) {
+  async down(queryInterface) {
     await queryInterface.dropTable('personas');
   }
 };

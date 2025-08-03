@@ -2,7 +2,7 @@
 const {
   Model
 } = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
+export default (sequelize, DataTypes) => {
   class Vehiculo extends Model {
 
     static associate(models) {
@@ -22,7 +22,12 @@ module.exports = (sequelize, DataTypes) => {
     },
     tipo_vehiculo: DataTypes.STRING,
     placa: DataTypes.STRING,
-    codigo: DataTypes.STRING
+    codigo: DataTypes.STRING,
+    estado: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true
+    }
   }, {
     sequelize,
     modelName: 'Vehiculo',

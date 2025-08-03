@@ -2,11 +2,11 @@
 const {
   Model
 } = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
+export default (sequelize, DataTypes) => {
   class Usuario extends Model {
     
     static associate(models) {
-      Usuario.belongsTo(models.Persona, {
+         Usuario.belongsTo(models.Persona, {
         foreignKey: 'id_usuario',
         as: 'persona',
         onUpdate: 'CASCADE',

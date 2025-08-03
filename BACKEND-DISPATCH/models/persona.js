@@ -4,7 +4,7 @@ const {
 } = require('sequelize'); //todas los modelos deben de erredar de esta clase
 
 //se exporta una funcionq ue recibe (instancia de conexion a base de datos, objeto con los tipos de datos) 
-module.exports = (sequelize, DataTypes) => {
+export default (sequelize, DataTypes) => {
   class Persona extends Model {
 
     static associate(models) {
@@ -61,6 +61,11 @@ module.exports = (sequelize, DataTypes) => {
     fecha_nac: {
       type: DataTypes.DATE,
       allowNull: false
+    },
+    estado: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true
     }
   }, {
     sequelize,
