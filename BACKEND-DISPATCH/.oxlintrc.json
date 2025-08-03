@@ -12,7 +12,8 @@
     "node", // Para funciones de Node.js como fs, path, etc.
     "promise", // Para async/await y promesas - SÍ funciona con ES modules
     "unicorn", // Buenas prácticas modernas JS
-    "oxc" // Plugin interno de oxlint
+    "oxc", // Plugin interno de oxlint
+    "import"
   ],
 
   "env": {
@@ -89,7 +90,9 @@
     "no-alert": "error", // No usar alert() en Node.js (es de browser)
     "no-eval": "error", // No usar eval() - inseguro
     "no-new-func": "error", // No usar new Function() - inseguro
-    "no-implied-eval": "error" // No usar setTimeout('code', 100) - inseguro
+    "no-implied-eval": "error", // No usar setTimeout('code', 100) - inseguro
+
+    "import/no-commonjs": "error" // No usar CommonJS
   },
 
   "ignorePatterns": [
@@ -105,7 +108,7 @@
   "overrides": [
     {
       // Para archivos .mjs (siempre ES modules)
-      "files": ["**/*.js"],
+      "files": ["**/*.mjs", "**/*.js"],
       "env": {
         "es6": true,
         "es2022": true
