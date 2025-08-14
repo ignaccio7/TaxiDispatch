@@ -55,12 +55,20 @@
         <v-list-item to="main" router link>
           <v-list-item-title>Inicio</v-list-item-title>
         </v-list-item>
-
-        <v-list-item to="history" router link>
+        <v-list-item to="servicios" router link>
+          <v-list-item-title>Servicios</v-list-item-title>
+        </v-list-item>
+        <v-list-item to="historial" router link>
           <v-list-item-title>Historial</v-list-item-title>
         </v-list-item>
-        <v-list-item to="/app/vehiculos" router link>
+        <v-list-item to="personal" router link>
+          <v-list-item-title>Personal</v-list-item-title>
+        </v-list-item>
+        <v-list-item to="vehiculos" router link>
           <v-list-item-title>Vehiculos</v-list-item-title>
+        </v-list-item>
+        <v-list-item to="usuarios" router link>
+          <v-list-item-title>Usuarios</v-list-item-title>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
