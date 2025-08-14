@@ -12,7 +12,7 @@ import DialogForm from '@/components/vehicles/DialogForm.vue';
     </v-row>
 
     <v-row class="align-center">
-      <v-col class="pa-0" align="start">
+      <v-col class="pa-0">
         <DialogForm />
       </v-col>
 
