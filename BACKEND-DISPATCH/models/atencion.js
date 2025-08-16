@@ -1,19 +1,17 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+import { Model } from "sequelize";
 export default (sequelize, DataTypes) => {
   class Atencion extends Model {
     static associate(models) {
-      Atencion.belongsTo(models.Conduce, {
+      this.belongsTo(models.Conduce, {
         foreignKey: 'id_conduce',
         as: 'conduce'
       });
-      Atencion.belongsTo(models.Cliente, {
+      this.belongsTo(models.Cliente, {
         foreignKey: 'id_cliente',
         as: 'cliente'
       });
-      Atencion.belongsTo(models.Usuario, {
+      this.belongsTo(models.Usuario, {
         foreignKey: 'id_usuario',
         as: 'usuario'
       });

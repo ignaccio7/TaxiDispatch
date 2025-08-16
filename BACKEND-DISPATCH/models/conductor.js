@@ -1,7 +1,5 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+import { Model } from "sequelize";
 export default (sequelize, DataTypes) => {
   class Conductor extends Model {
 
@@ -18,7 +16,6 @@ export default (sequelize, DataTypes) => {
         foreignKey: 'id_conductor',
         as: 'conducciones'
       });
-
     }
   }
   Conductor.init({

@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 export default{
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('conductors', {
+    await queryInterface.createTable('Conductors', {
       id_conductor: {
         allowNull: false,
         primaryKey: true,
@@ -41,6 +41,6 @@ export default{
     });
   },
   async down(queryInterface) {
-    await queryInterface.dropTable('conductors');
+    await queryInterface.dropTable('Conductors');
   }
 };

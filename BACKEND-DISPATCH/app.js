@@ -2,6 +2,9 @@ import express from 'express'
 import { createServer } from 'node:http'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
+//importamos las rutas de persona
+import personaRoutes from './routes/persona.routes.js';
+
 
 const STATUS_CODES = {
   ACCEPTED: 202,
@@ -44,6 +47,9 @@ app.get('/health', (req, res) => {
     uptime: process.uptime()
   })
 })
+
+app.use('/api/personas', personaRoutes);
+
 
 // Manejo de rutas no encontradas
 app.use('*', (req, res) => {

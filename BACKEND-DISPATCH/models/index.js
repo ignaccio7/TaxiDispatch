@@ -1,43 +1,38 @@
-'use strict';
+import { Sequelize, DataTypes } from "sequelize";
+import PersonaModel from "./persona.js";
+import DireccionModel from "./direccion.js";
+import ConductorModel from "./conductor.js";
+import VehiculoModel from "./vehiculo.js";
+import ConduceModel from "./conduce.js";
+import UsuarioModel from "./usuario.js";
+import ClienteModel from "./cliente.js";
+import AtencionModel from "./atencion.js";
 
-const fs = require('node:fs');
-const path = require('node:path');
-const Sequelize = require('sequelize');
-const process = require('node:process');
-const basename = path.basename(__filename);
-const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
-const db = {};
+// Configura tu conexión a la base de datos
+const sequelize = new Sequelize("bdtaxi_dispatch", "postgres", "123456", {
+  host: "localhost",
+  dialect: "postgres", // o mysql, sqlite...
+  logging: false,       // opcional
+});
 
-let sequelize;
-if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
-}
+// Inicializar todos los modelos en un objeto
+const models = {
+  Persona: PersonaModel(sequelize, DataTypes),
+  Direccion: DireccionModel(sequelize, DataTypes),
+  Conductor: ConductorModel(sequelize, DataTypes),
+  Vehiculo: VehiculoModel(sequelize, DataTypes),
+  Conduce: ConduceModel(sequelize, DataTypes),
+  Usuario: UsuarioModel(sequelize, DataTypes),
+  Cliente: ClienteModel(sequelize, DataTypes),
+  Atencion: AtencionModel(sequelize, DataTypes),
+};
 
-fs
-  .readdirSync(__dirname)
-  .filter(file => {
-    return (
-      file.indexOf('.') !== 0 &&
-      file !== basename &&
-      file.slice(-3) === '.js' &&
-      file.indexOf('.test.js') === -1
-    );
-  })
-  .forEach(file => {
-    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
-    db[model.name] = model;
-  });
-
-Object.keys(db).forEach(modelName => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
+// Configura asociaciones (si tus modelos tienen la función associate)
+Object.values(models).forEach(model => {
+  if (typeof model.associate === "function") {
+    model.associate(models);
   }
 });
 
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
-
-module.exports = db;
+// Exporta la conexión y los modelos
+export default { sequelize, ...models };

@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 export default {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('usuarios', {
+    await queryInterface.createTable('Usuarios', {
        id_usuario: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -37,6 +37,6 @@ export default {
     });
   },
   async down(queryInterface) {
-    await queryInterface.dropTable('usuarios');
+    await queryInterface.dropTable('Usuarios');
   }
 };

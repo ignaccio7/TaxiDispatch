@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 export default {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('direccions', {
+    await queryInterface.createTable('Direccions', {
       id_direccion: {
         allowNull: false,
         autoIncrement: true,
@@ -41,6 +41,6 @@ export default {
     });
   },
   async down(queryInterface) {
-    await queryInterface.dropTable('direccions');
+    await queryInterface.dropTable('Direccions');
   }
 };

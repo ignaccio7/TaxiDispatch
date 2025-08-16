@@ -1,7 +1,5 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+import { Model } from "sequelize";
 export default(sequelize, DataTypes) => {
   class Cliente extends Model {
     /**
@@ -9,8 +7,9 @@ export default(sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(_models) {
+    static associate(models) {
       // define association here
+      this.hasMany(models.Atencion, { foreignKey: "id_cliente" });
     }
   }
   Cliente.init({

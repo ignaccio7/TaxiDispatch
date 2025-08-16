@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 export default {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('atencions', {
+    await queryInterface.createTable('Atencions', {
       id_atencion: {
         allowNull: false,
         autoIncrement: true,
@@ -75,6 +75,6 @@ export default {
     });
   },
   async down(queryInterface) {
-    await queryInterface.dropTable('atencions');
+    await queryInterface.dropTable('Atencions');
   }
 };

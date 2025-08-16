@@ -1,7 +1,5 @@
 'use strict';
-const {
-  Model
-} = require('sequelize'); //todas los modelos deben de erredar de esta clase
+import { Model } from "sequelize";  //todas los modelos deben de erredar de esta clase
 
 //se exporta una funcionq ue recibe (instancia de conexion a base de datos, objeto con los tipos de datos) 
 export default (sequelize, DataTypes) => {

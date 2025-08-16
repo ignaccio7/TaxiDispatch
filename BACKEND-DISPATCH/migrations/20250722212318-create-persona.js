@@ -4,7 +4,7 @@ export default {
 
   //logica para crear la tabla
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('personas', {
+    await queryInterface.createTable('Personas', {
       id_persona: {
         allowNull: false,
         autoIncrement: true,
@@ -49,6 +49,6 @@ export default {
   },
   //logica para eliminar la tabla
   async down(queryInterface) {
-    await queryInterface.dropTable('personas');
+    await queryInterface.dropTable('Personas');
   }
 };
