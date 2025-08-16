@@ -3,14 +3,14 @@ import db from "../models/index.js"; // importa todos los modelos
 //import { Persona } from "../models/persona.js"; 
 //const Persona = db.Persona;
 // Crear una persona
-const persona = await db.Persona.create({
+/*const persona = await db.Persona.create({
   ci: 12345678,
   paterno: "Mamani",
   materno: "Condori",
   nombre: "Eddy",
   fecha_nac: "1999-01-01",
   estado: true
-});
+});*/
 
 // Crear una nueva persona
 export const createPersona = async (req, res) => {
