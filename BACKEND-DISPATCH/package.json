@@ -11,7 +11,10 @@
     "lint:fix": "oxlint --fix .",
     "format:fix": "prettier --write .",
     "validate": "npm run lint && npm run format",
-    "start": "node app.js"
+    "start": "node app.js",
+    "db:migrate": "sequelize-cli db:migrate",
+    "db:migrate:undo": "sequelize-cli db:migrate:undo",
+    "db:migrate:undo:all": "sequelize-cli db:migrate:undo:all"
   },
   "author": "rc-team",
   "license": "GPL-3.0",
@@ -19,5 +22,15 @@
     "@prettier/plugin-oxc": "^0.0.4",
     "oxlint": "^1.5.0",
     "prettier": "^3.6.2"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "morgan": "^1.10.1",
+    "pg": "^8.16.3",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.7",
+    "sequelize-cli": "^6.6.3"
   }
 }

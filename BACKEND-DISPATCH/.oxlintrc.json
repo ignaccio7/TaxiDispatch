@@ -90,9 +90,11 @@
     "no-alert": "error", // No usar alert() en Node.js (es de browser)
     "no-eval": "error", // No usar eval() - inseguro
     "no-new-func": "error", // No usar new Function() - inseguro
-    "no-implied-eval": "error", // No usar setTimeout('code', 100) - inseguro
+    "no-implied-eval": "error",, // No usar setTimeout('code', 100) - inseguro
 
     "import/no-commonjs": "error" // No usar CommonJS
+    "sort-keys": "off",
+    "yoda": "off"
   },
 
   "ignorePatterns": [
@@ -121,7 +123,7 @@
       // Para archivos de configuración - permitir console.log
       "files": ["**/config/**/*.js", "**/*.config.js"],
       "rules": {
-        "no-console": "off" // En configs está bien usar console.log
+        "no-console": "warn" // En configs está bien usar console.log
       }
     }
   ]
