@@ -1,6 +1,7 @@
 {
   "name": "taxidispatch-monorepo",
   "private": true,
+  "type": "module",
   "workspaces": [
     "BACKEND-DISPATCH",
     "FRONTEND-DISPATCH"

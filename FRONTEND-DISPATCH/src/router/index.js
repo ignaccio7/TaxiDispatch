@@ -1,23 +1,54 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import { createRouter, createWebHistory } from "vue-router";
+import MainLayout from "@/layouts/MainLayout.vue";
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: HomeView,
+      path: "/",
+      name: "home",
+      component: () => import("@/views/HomeView.vue"),
     },
+
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue'),
+      path: "/app",
+      component: MainLayout,
+      children: [
+        {
+          path: "main",
+          name: "main",
+          component: () => import("@/views/MainView.vue"),
+        },
+        {
+          path: "servicios",
+          name: "service",
+          component: () => import("@/views/ServiceView.vue"),
+        },
+        {
+          path: "historial",
+          name: "history",
+          component: () => import("@/views/HistoryView.vue"),
+        },
+
+        {
+          path: "vehiculos",
+          name: "vehicles",
+          component: () => import("@/views/vehicles/VehiclesPage.vue"),
+        },
+        {
+          path: "personal",
+          name: "staff",
+          component: () => import("@/views/staff/StaffView.vue"),
+        },
+        {
+          path: "usuarios",
+          name: "users",
+          component: () => import("@/views/users/UserView.vue"),
+        },
+      ],
     },
   ],
-})
+});
 
-export default router
+export default router;
