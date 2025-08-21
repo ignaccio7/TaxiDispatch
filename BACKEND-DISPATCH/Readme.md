@@ -3,6 +3,7 @@
 Este proyecto implementa un sistema de gestión de taxis utilizando **Node.js**, **PostgreSQL** y el ORM **Sequelize**. Incluye la definición de modelos, migraciones, relaciones entre tablas y ejecución de comandos necesarios para ponerlo en funcionamiento localmente.
 
 ---
+
 ## ⚙️ Tecnologías utilizadas
 
 - **Node.js v20.17.0**
@@ -28,11 +29,12 @@ Este proyecto implementa un sistema de gestión de taxis utilizando **Node.js**,
 ## 📦 Instalación del entorno local
 
 ### 1. Instalar Node.js
+
 - Descargar Node.js versión `20.17.0` desde [https://nodejs.org](https://nodejs.org)
 
 ### 2. Instalar PostgreSQL
-- Descargar e instalar PostgreSQL desde [https://www.postgresql.org/download/](https://www.postgresql.org/download/)
 
+- Descargar e instalar PostgreSQL desde [https://www.postgresql.org/download/](https://www.postgresql.org/download/)
 
 ## 🔧 Configuración
 
@@ -124,3 +126,4 @@ Mantén control de versiones con Git para evitar conflictos.
 
 📌 Créditos
 Proyecto desarrollado por Eddy Mamani Condori y equipo.
+```

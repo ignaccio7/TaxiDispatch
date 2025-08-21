@@ -1,4 +1,5 @@
-'use strict';
+/* eslint-disable sort-keys */
+'use strict'
 /** @type {import('sequelize-cli').Migration} */
 export default {
   async up(queryInterface, Sequelize) {
@@ -24,7 +25,7 @@ export default {
         allowNull: false,
         unique: true, //asegura que sea 1:1
         references: {
-          model: 'personas', // Nombre de la tabla personas en la BD
+          model: 'Personas', // Nombre de la tabla personas en la BD
           key: 'id_persona'
         },
         onUpdate: 'CASCADE',
@@ -38,9 +39,9 @@ export default {
         allowNull: false,
         type: Sequelize.DATE
       }
-    });
+    })
   },
   async down(queryInterface) {
-    await queryInterface.dropTable('Direccions');
+    await queryInterface.dropTable('Direccions')
   }
-};
+}

@@ -1,4 +1,5 @@
-'use strict';
+/* eslint-disable sort-keys */
+'use strict'
 /** @type {import('sequelize-cli').Migration} */
 export default {
   async up(queryInterface, Sequelize) {
@@ -13,7 +14,7 @@ export default {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'conductors', // nombre exacto de la tabla conductores
+          model: 'Conductors', // nombre exacto de la tabla conductores
           key: 'id_conductor'
         },
         onUpdate: 'CASCADE',
@@ -23,7 +24,7 @@ export default {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'vehiculos',
+          model: 'Vehiculos',
           key: 'id_vehiculo'
         },
         onUpdate: 'CASCADE',
@@ -37,9 +38,9 @@ export default {
         allowNull: false,
         type: Sequelize.DATE
       }
-    });
+    })
   },
   async down(queryInterface) {
-    await queryInterface.dropTable('Conduces');
+    await queryInterface.dropTable('Conduces')
   }
-};
+}

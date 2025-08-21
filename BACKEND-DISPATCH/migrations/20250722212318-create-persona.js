@@ -1,7 +1,7 @@
-'use strict';
+/* eslint-disable sort-keys */
+'use strict'
 /** @type {import('sequelize-cli').Migration} */
 export default {
-
   //logica para crear la tabla
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Personas', {
@@ -14,13 +14,13 @@ export default {
       ci: {
         allowNull: false,
         type: Sequelize.STRING //123132123-1
-
       },
-      paterno: { 
+      paterno: {
         allowNull: true,
         type: Sequelize.STRING
       },
-      materno: { //eliminar
+      materno: {
+        //eliminar
         allowNull: true,
         type: Sequelize.STRING
       },
@@ -45,10 +45,10 @@ export default {
         allowNull: false,
         type: Sequelize.DATE
       }
-    });
+    })
   },
   //logica para eliminar la tabla
   async down(queryInterface) {
-    await queryInterface.dropTable('Personas');
+    await queryInterface.dropTable('Personas')
   }
-};
+}

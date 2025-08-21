@@ -1,6 +1,7 @@
-'use strict';
+/* eslint-disable sort-keys */
+'use strict'
 /** @type {import('sequelize-cli').Migration} */
-export default{
+export default {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Conductors', {
       id_conductor: {
@@ -8,7 +9,7 @@ export default{
         primaryKey: true,
         type: Sequelize.INTEGER,
         references: {
-          model: 'personas', // Nombre real de la tabla personas
+          model: 'Personas', // Nombre real de la tabla personas
           key: 'id_persona'
         },
         onUpdate: 'CASCADE',
@@ -38,9 +39,9 @@ export default{
         allowNull: false,
         type: Sequelize.DATE
       }
-    });
+    })
   },
   async down(queryInterface) {
-    await queryInterface.dropTable('Conductors');
+    await queryInterface.dropTable('Conductors')
   }
-};
+}

@@ -1,5 +1,6 @@
-'use strict';
-import { Model } from "sequelize";
+/* eslint-disable sort-keys */
+'use strict'
+import { Model } from 'sequelize'
 export default (sequelize, DataTypes) => {
   class Conduce extends Model {
     /**
@@ -14,27 +15,30 @@ export default (sequelize, DataTypes) => {
         as: 'conductor',
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
-      });
+      })
       // relacion con vehiculo
       Conduce.belongsTo(models.Vehiculo, {
         foreignKey: 'id_vehiculo',
         as: 'vehiculo',
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
-      });
+      })
     }
   }
-  Conduce.init({
-    id_conduce: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true
+  Conduce.init(
+    {
+      id_conduce: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+      },
+      id_conductor: DataTypes.INTEGER,
+      id_vehiculo: DataTypes.INTEGER
     },
-    id_conductor: DataTypes.INTEGER,
-    id_vehiculo: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'Conduce',
-  });
-  return Conduce;
-};
+    {
+      sequelize,
+      modelName: 'Conduce'
+    }
+  )
+  return Conduce
+}

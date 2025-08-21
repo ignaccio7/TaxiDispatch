@@ -1,6 +1,7 @@
-'use strict';
+/* eslint-disable sort-keys */
+'use strict'
 /** @type {import('sequelize-cli').Migration} */
-export default{
+export default {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Clientes', {
       id_cliente: {
@@ -30,9 +31,9 @@ export default{
         allowNull: false,
         type: Sequelize.DATE
       }
-    });
+    })
   },
   async down(queryInterface) {
-    await queryInterface.dropTable('Clientes');
+    await queryInterface.dropTable('Clientes')
   }
-};
+}

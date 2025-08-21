@@ -1,14 +1,15 @@
-'use strict';
+/* eslint-disable sort-keys */
+'use strict'
 /** @type {import('sequelize-cli').Migration} */
 export default {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Usuarios', {
-       id_usuario: {
+      id_usuario: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         allowNull: false,
         references: {
-          model: 'personas',
+          model: 'Personas',
           key: 'id_persona'
         },
         onUpdate: 'CASCADE',
@@ -34,9 +35,9 @@ export default {
         allowNull: false,
         type: Sequelize.DATE
       }
-    });
+    })
   },
   async down(queryInterface) {
-    await queryInterface.dropTable('Usuarios');
+    await queryInterface.dropTable('Usuarios')
   }
-};
+}

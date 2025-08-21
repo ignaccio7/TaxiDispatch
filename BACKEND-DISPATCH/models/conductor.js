@@ -1,8 +1,8 @@
-'use strict';
-import { Model } from "sequelize";
+/* eslint-disable sort-keys */
+'use strict'
+import { Model } from 'sequelize'
 export default (sequelize, DataTypes) => {
   class Conductor extends Model {
-
     static associate(models) {
       // Relación 1:1 con Persona
       Conductor.belongsTo(models.Persona, {
@@ -10,40 +10,43 @@ export default (sequelize, DataTypes) => {
         as: 'persona',
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
-      });
+      })
       // relacion con conductor
       Conductor.hasMany(models.Conduce, {
         foreignKey: 'id_conductor',
         as: 'conducciones'
-      });
+      })
     }
   }
-  Conductor.init({
-    id_conductor: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true
+  Conductor.init(
+    {
+      id_conductor: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true
+      },
+      nro_licencia: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true
+      },
+      categoria: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      expiracion_licencia: {
+        type: DataTypes.DATE,
+        allowNull: false
+      },
+      expedicion_licencia: {
+        type: DataTypes.DATE,
+        allowNull: false
+      }
     },
-    nro_licencia: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true
-    },
-    categoria: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    expiracion_licencia: {
-      type: DataTypes.DATE,
-      allowNull: false
-    },
-    expedicion_licencia: {
-      type: DataTypes.DATE,
-      allowNull: false
+    {
+      sequelize,
+      modelName: 'Conductor'
     }
-  }, {
-    sequelize,
-    modelName: 'Conductor',
-  });
-  return Conductor;
-};
+  )
+  return Conductor
+}
